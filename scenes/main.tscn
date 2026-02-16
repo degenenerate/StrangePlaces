@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://doadr8jhtsx4q"]
+
+[ext_resource type="Script" uid="uid://d3wq1ip134eqr" path="res://scripts/globals/scene_manager.gd" id="1_0wfyh"]
+[ext_resource type="Material" uid="uid://movyp418u6f6" path="res://resources/shader_manual_pixel_filter.tres" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://c4ski8l35lvxj" path="res://scenes/_tools/scene_transition.tscn" id="3_sugp2"]
+
+[node name="Main" type="Node" unique_id=1411486586]
+script = ExtResource("1_0wfyh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1137011327]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=924841124]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SceneDebug" type="Control" parent="CanvasLayer/Control" unique_id=1223300476]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DebugPrevScene" type="Button" parent="CanvasLayer/Control/SceneDebug" unique_id=1208298043]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 1008.0
+offset_right = 128.0
+offset_bottom = 1064.0
+mouse_filter = 1
+text = "[DEBUG] Prev
+"
+
+[node name="DebugResetScene" type="Button" parent="CanvasLayer/Control/SceneDebug" unique_id=772547865]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 1008.0
+offset_right = 257.0
+offset_bottom = 1064.0
+mouse_filter = 1
+text = "[DEBUG] Reset
+"
+
+[node name="DebugNextScene" type="Button" parent="CanvasLayer/Control/SceneDebug" unique_id=56438326]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 1008.0
+offset_right = 379.0
+offset_bottom = 1064.0
+mouse_filter = 1
+text = "[DEBUG] Next
+"
+
+[node name="SceneTransition" parent="." unique_id=1536279083 instance=ExtResource("3_sugp2")]
+
+[node name="World" type="Node2D" parent="." unique_id=181959689]
+material = ExtResource("3_jyhfs")
+
+[connection signal="button_down" from="CanvasLayer/Control/SceneDebug/DebugPrevScene" to="." method="prev_scene"]
+[connection signal="button_down" from="CanvasLayer/Control/SceneDebug/DebugResetScene" to="." method="restart_scene"]
+[connection signal="button_down" from="CanvasLayer/Control/SceneDebug/DebugNextScene" to="." method="next_scene"]

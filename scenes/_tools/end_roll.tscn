@@ -1,0 +1,134 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjtws6q3lqs37"]
+
+[ext_resource type="FontFile" uid="uid://boyunv0o41txp" path="res://fonts/funnel_sans/FunnelSans-VariableFont_wght.ttf" id="1_awrl2"]
+[ext_resource type="Texture2D" uid="uid://bhapmntrfcj8p" path="res://textures/title-image.png" id="2_8gv88"]
+
+[sub_resource type="GDScript" id="GDScript_d23ta"]
+script/source = "extends Node2D
+
+func _on_start_button_down():
+	print(\"next\")
+	SceneTransition.next_scene()
+
+func _on_quit_button_down():
+	get_tree().quit()
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_nl6gh"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6n4j"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_gscva"]
+font = ExtResource("1_awrl2")
+font_size = 32
+
+[node name="EndMenu" type="Node2D"]
+script = SubResource("GDScript_d23ta")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -600.0
+offset_right = -920.0
+offset_bottom = -560.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 828.0
+offset_right = 1120.0
+offset_bottom = 949.0
+
+[node name="PlayLabel" type="Label" parent="CanvasLayer/Control/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -73.5
+offset_right = 150.0
+offset_bottom = 101.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "REPLAY"
+label_settings = SubResource("LabelSettings_nl6gh")
+horizontal_alignment = 1
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 972.0
+offset_right = 1025.0
+offset_bottom = 1060.0
+
+[node name="QuitLabel" type="Label" parent="CanvasLayer/Control/QuitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -44.0
+offset_right = 95.5
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT
+"
+label_settings = SubResource("LabelSettings_t6n4j")
+horizontal_alignment = 1
+
+[node name="Credits" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1304.0
+offset_top = 60.0
+offset_right = 1831.0
+offset_bottom = 633.0
+grow_horizontal = 0
+text = "DEVELOPMENT
+OuterSoda
+
+MUSIC
+Mayo
+
+THANKS
+ConstantDeriv
+Yumei"
+label_settings = SubResource("LabelSettings_gscva")
+horizontal_alignment = 2
+
+[node name="GameTitle" type="TextureRect" parent="CanvasLayer/Control"]
+z_index = -1
+layout_mode = 0
+offset_left = 136.0
+offset_top = 460.0
+offset_right = 2056.0
+offset_bottom = 1540.0
+rotation = -0.430484
+scale = Vector2(1.01321, 1.01321)
+mouse_filter = 2
+texture = ExtResource("2_8gv88")
+
+[connection signal="button_down" from="CanvasLayer/Control/PlayButton" to="." method="_on_start_button_down"]
+[connection signal="button_down" from="CanvasLayer/Control/QuitButton" to="." method="_on_quit_button_down"]

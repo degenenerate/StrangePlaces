@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://rjhyhcqk8br7"]
+
+[ext_resource type="FontFile" uid="uid://boyunv0o41txp" path="res://fonts/funnel_sans/FunnelSans-VariableFont_wght.ttf" id="1_caahi"]
+
+[resource]
+font = ExtResource("1_caahi")
+font_size = 22

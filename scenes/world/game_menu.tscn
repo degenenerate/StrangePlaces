@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://byh0u8t6qrc3p"]
+
+[ext_resource type="Script" uid="uid://d0e57o7xawc5g" path="res://scripts/main_menu/main_menu.gd" id="1_41sa5"]
+[ext_resource type="Texture2D" uid="uid://b5m017rfcl6py" path="res://textures/placeholder.png" id="2_41sa5"]
+
+[node name="GameMenu" type="Node2D"]
+script = ExtResource("1_41sa5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Placeholder" type="Polygon2D" parent="."]
+texture_filter = 1
+position = Vector2(-40, 0)
+color = Color(0.494118, 1, 1, 1)
+polygon = PackedVector2Array(-64, -64, -64, 64, 64, 64, 64, -64)
+
+[node name="Placeholder2" type="Polygon2D" parent="Placeholder"]
+position = Vector2(96, 40)
+color = Color(0.494118, 0.309804, 1, 1)
+polygon = PackedVector2Array(-64, -64, -64, 64, 64, 64, 64, -64)
+
+[node name="Sprite2D" type="Sprite2D" parent="Placeholder"]
+texture_filter = 1
+position = Vector2(-64, -64)
+texture = ExtResource("2_41sa5")
+centered = false
