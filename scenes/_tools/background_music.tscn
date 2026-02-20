@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxsxpyp3mvw14"]
+[gd_scene format=3 uid="uid://cxsxpyp3mvw14"]
 
 [ext_resource type="AudioStream" uid="uid://c64imopdaur7y" path="res://sfx/bgm.mp3" id="1_b8ynu"]
+[ext_resource type="AudioStream" uid="uid://c2d636pi76mnx" path="res://sfx/rhythm_music.mp3" id="2_gbj32"]
 
-[node name="BackgroundMusic" type="AudioStreamPlayer"]
+[node name="BackgroundMusic" type="AudioStreamPlayer" unique_id=816559020]
 stream = ExtResource("1_b8ynu")
 autoplay = true
+
+[node name="RhythmMusic" type="AudioStreamPlayer2D" parent="." unique_id=1967457722]
+stream = ExtResource("2_gbj32")

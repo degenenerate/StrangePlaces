@@ -1,49 +1,24 @@
 [gd_scene format=3 uid="uid://4658f74o6ofn"]
 
-[ext_resource type="Texture2D" uid="uid://b5m017rfcl6py" path="res://textures/placeholder.png" id="1_014kd"]
 [ext_resource type="Material" uid="uid://movyp418u6f6" path="res://resources/shader_manual_pixel_filter.tres" id="1_b0ve4"]
-[ext_resource type="Script" uid="uid://5vqisga7s0w" path="res://scripts/TEMP.gd" id="2_bswci"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_4nkto"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_fcfvj"]
+[ext_resource type="Script" uid="uid://dh623f4bwmktf" path="res://scripts/rhythm/rhythm_manager.gd" id="5_b0ve4"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_pa8r4"]
+[ext_resource type="Script" uid="uid://djt6j20wum6ta" path="res://scripts/rhythm/beats_manager.gd" id="6_teo0j"]
+[ext_resource type="PackedScene" uid="uid://berfw17en8l4x" path="res://scenes/world/rhythm/beat.tscn" id="7_28edb"]
 
 [sub_resource type="Resource" id="Resource_15mv3"]
 script = ExtResource("5_pa8r4")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b0ve4"]
+normal = Vector2(0, 1)
 
 [node name="Level1" type="Node2D" unique_id=1416608361]
 material = ExtResource("1_b0ve4")
 use_parent_material = true
 
-[node name="Placeholder" type="Polygon2D" parent="." unique_id=527393765]
-use_parent_material = true
-position = Vector2(160, 120)
-color = Color(0.494118, 1, 1, 1)
-polygon = PackedVector2Array(-64, -64, -64, 64, 64, 64, 64, -64)
-
-[node name="Placeholder2" type="Polygon2D" parent="Placeholder" unique_id=1787660697]
-use_parent_material = true
-position = Vector2(96, 40)
-color = Color(0.494118, 0.309804, 1, 1)
-polygon = PackedVector2Array(-64, -64, -64, 64, 64, 64, 64, -64)
-
-[node name="Sprite2D" type="Sprite2D" parent="Placeholder" unique_id=1178587867]
-use_parent_material = true
-position = Vector2(-79.949, -70.7956)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("1_014kd")
-centered = false
-script = ExtResource("2_bswci")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Placeholder" unique_id=834131956]
-use_parent_material = true
-position = Vector2(-64, 88)
-rotation = -2.40773
-scale = Vector2(0.316483, 1.70872)
-texture = ExtResource("1_014kd")
-centered = false
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=647373856]
-position = Vector2(80.051, 49.2044)
 zoom = Vector2(6, 6)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=147609742]
@@ -52,14 +27,53 @@ process_physics_priority = 300
 script = ExtResource("3_4nkto")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1692743781 node_paths=PackedStringArray("follow_target")]
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1692743781]
 top_level = true
-position = Vector2(80.051, 49.2044)
 script = ExtResource("4_fcfvj")
 follow_mode = 2
-follow_target = NodePath("../Placeholder/Sprite2D")
 zoom = Vector2(6, 6)
 tween_resource = SubResource("Resource_15mv3")
 tween_on_load = false
 follow_damping = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="RhythmGame" type="Node2D" parent="." unique_id=820793169]
+script = ExtResource("5_b0ve4")
+
+[node name="Arena" type="Sprite2D" parent="RhythmGame" unique_id=1157354096]
+
+[node name="Placeholder" type="Polygon2D" parent="RhythmGame/Arena" unique_id=527393765]
+use_parent_material = true
+position = Vector2(0, -8)
+scale = Vector2(1, 1.0799989)
+color = Color(0.16862746, 0.14117648, 0.25490198, 1)
+polygon = PackedVector2Array(-64, -64, -64, 64, 2.2243195, 64, 64, 64, 64, -64)
+
+[node name="Needle" type="Area2D" parent="RhythmGame" unique_id=1777925891]
+position = Vector2(0, 43)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RhythmGame/Needle" unique_id=1544061635]
+shape = SubResource("WorldBoundaryShape2D_b0ve4")
+
+[node name="ColorRect" type="ColorRect" parent="RhythmGame/Needle" unique_id=669120281]
+offset_left = -64.0
+offset_right = -24.0
+offset_bottom = 40.0
+scale = Vector2(3.2, 0.15999758)
+
+[node name="BeatsManager" type="Node" parent="RhythmGame" unique_id=1083324480 node_paths=PackedStringArray("beat_parents")]
+script = ExtResource("6_teo0j")
+beat_scene = ExtResource("7_28edb")
+beat_parents = [NodePath("LeftBeats"), NodePath("MidLeftBeats"), NodePath("MidRightBeats"), NodePath("RightBeats")]
+
+[node name="LeftBeats" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=1259865955]
+position = Vector2(-48, -77)
+
+[node name="MidLeftBeats" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=1982831380]
+position = Vector2(-16, -77)
+
+[node name="MidRightBeats" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=1290638926]
+position = Vector2(17, -77)
+
+[node name="RightBeats" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=1387385214]
+position = Vector2(49, -77)

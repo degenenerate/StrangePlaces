@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://berfw17en8l4x"]
+
+[ext_resource type="Script" uid="uid://ctmugfxav42yj" path="res://scripts/rhythm/beat.gd" id="1_38rxm"]
+
+[node name="Beat" type="Sprite2D" unique_id=493880687]
+script = ExtResource("1_38rxm")
+unitsPerBeat = 30
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1250710324]
+offset_left = -16.0
+offset_right = 24.0
+offset_bottom = 40.000004
+scale = Vector2(0.80847764, -0.16773236)
