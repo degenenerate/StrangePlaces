@@ -29,6 +29,9 @@ var _next_beat: int
 var _beat_location: int
 var _time_until_next: float
 
+var beat_hit_count := 0
+var beat_streak := 0
+
 func _select_beat(idx: int) -> void:
 	_next_beat = idx
 	
@@ -56,11 +59,23 @@ func _spawn_beats(delta: float) -> void:
 		song_finished = true
 
 func _input(event: InputEvent) -> void:
+	var beatIndex := -1
 	if event.is_action_pressed("beat_left"):
-		beat_checkers[0].hit_beat()
+		beatIndex = 0
 	if event.is_action_pressed("beat_mid_left"):
-		beat_checkers[1].hit_beat()
+		beatIndex = 1
 	if event.is_action_pressed("beat_mid_right"):
-		beat_checkers[2].hit_beat()
+		beatIndex = 2
 	if event.is_action_pressed("beat_right"):
-		beat_checkers[3].hit_beat()
+		beatIndex = 3
+		
+	if beatIndex == -1:
+		return
+	
+	var hitBeat: bool = beat_checkers[beatIndex].hit_beat()
+	if hitBeat:
+		beat_hit_count += 1
+		beat_streak += 1
+	else:
+		beat_streak = 0
+	print("Total Beats:", beat_hit_count, "Beat Streak:", beat_streak)
