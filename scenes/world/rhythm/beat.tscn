@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://berfw17en8l4x"]
 
 [ext_resource type="Script" uid="uid://ctmugfxav42yj" path="res://scripts/rhythm/beat.gd" id="1_38rxm"]
+[ext_resource type="Script" uid="uid://bx3kcgku5ylk6" path="res://scripts/beat_area.gd" id="2_rskt4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38rxm"]
+size = Vector2(32, 9)
 
 [node name="Beat" type="Sprite2D" unique_id=493880687]
 script = ExtResource("1_38rxm")
@@ -11,3 +15,13 @@ offset_left = -16.0
 offset_right = 24.0
 offset_bottom = 40.000004
 scale = Vector2(0.80847764, -0.16773236)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1656687195 groups=["Beat"]]
+monitoring = false
+script = ExtResource("2_rskt4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=637761080]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_38rxm")
+
+[connection signal="beat_hit" from="Area2D" to="." method="_on_area_2d_beat_hit"]

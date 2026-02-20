@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_pa8r4"]
 [ext_resource type="Script" uid="uid://djt6j20wum6ta" path="res://scripts/rhythm/beats_manager.gd" id="6_teo0j"]
 [ext_resource type="PackedScene" uid="uid://berfw17en8l4x" path="res://scenes/world/rhythm/beat.tscn" id="7_28edb"]
+[ext_resource type="PackedScene" uid="uid://c7ed1gwvngvxm" path="res://scenes/_tools/beat_checker.tscn" id="8_28edb"]
 
 [sub_resource type="Resource" id="Resource_15mv3"]
 script = ExtResource("5_pa8r4")
@@ -61,19 +62,40 @@ offset_right = -24.0
 offset_bottom = 40.0
 scale = Vector2(3.2, 0.15999758)
 
-[node name="BeatsManager" type="Node" parent="RhythmGame" unique_id=1083324480 node_paths=PackedStringArray("beat_parents")]
+[node name="BeatsManager" type="Node" parent="RhythmGame" unique_id=1083324480 node_paths=PackedStringArray("beat_parents", "beat_checkers")]
 script = ExtResource("6_teo0j")
 beat_scene = ExtResource("7_28edb")
-beat_parents = [NodePath("LeftBeats"), NodePath("MidLeftBeats"), NodePath("MidRightBeats"), NodePath("RightBeats")]
+beat_parents = [NodePath("BeatSpawnLocations/LeftBeats"), NodePath("BeatSpawnLocations/MidLeftBeats"), NodePath("BeatSpawnLocations/MidRightBeats"), NodePath("BeatSpawnLocations/RightBeats")]
+beat_checkers = [NodePath("BeatCheckLocations/BeatCheckerLeft"), NodePath("BeatCheckLocations/BeatCheckerMidLeft"), NodePath("BeatCheckLocations/BeatCheckerMidRight"), NodePath("BeatCheckLocations/BeatCheckerRight")]
 
-[node name="LeftBeats" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=1259865955]
+[node name="BeatSpawnLocations" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=922768853]
+
+[node name="LeftBeats" type="Node2D" parent="RhythmGame/BeatsManager/BeatSpawnLocations" unique_id=1259865955]
 position = Vector2(-48, -77)
 
-[node name="MidLeftBeats" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=1982831380]
+[node name="MidLeftBeats" type="Node2D" parent="RhythmGame/BeatsManager/BeatSpawnLocations" unique_id=1982831380]
 position = Vector2(-16, -77)
 
-[node name="MidRightBeats" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=1290638926]
+[node name="MidRightBeats" type="Node2D" parent="RhythmGame/BeatsManager/BeatSpawnLocations" unique_id=1290638926]
 position = Vector2(17, -77)
 
-[node name="RightBeats" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=1387385214]
+[node name="RightBeats" type="Node2D" parent="RhythmGame/BeatsManager/BeatSpawnLocations" unique_id=1387385214]
 position = Vector2(49, -77)
+
+[node name="BeatCheckLocations" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=1498891191]
+
+[node name="BeatCheckerLeft" parent="RhythmGame/BeatsManager/BeatCheckLocations" unique_id=942611136 instance=ExtResource("8_28edb")]
+position = Vector2(-48, 46)
+beatGroup = "Beat"
+
+[node name="BeatCheckerMidLeft" parent="RhythmGame/BeatsManager/BeatCheckLocations" unique_id=373232512 instance=ExtResource("8_28edb")]
+position = Vector2(-16, 46)
+beatGroup = "Beat"
+
+[node name="BeatCheckerMidRight" parent="RhythmGame/BeatsManager/BeatCheckLocations" unique_id=1474178150 instance=ExtResource("8_28edb")]
+position = Vector2(17, 46)
+beatGroup = "Beat"
+
+[node name="BeatCheckerRight" parent="RhythmGame/BeatsManager/BeatCheckLocations" unique_id=1800804778 instance=ExtResource("8_28edb")]
+position = Vector2(49, 46)
+beatGroup = "Beat"

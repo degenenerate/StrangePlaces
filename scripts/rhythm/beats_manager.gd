@@ -21,6 +21,7 @@ var beat_info: Array[Array] = [
 
 @export var beat_scene: Resource
 @export var beat_parents: Array[Node2D]
+@export var beat_checkers: Array[BeatChecker]
 
 var song_finished: bool = false
 
@@ -53,3 +54,13 @@ func _spawn_beats(delta: float) -> void:
 			return
 		
 		song_finished = true
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("beat_left"):
+		beat_checkers[0].hit_beat()
+	if event.is_action_pressed("beat_mid_left"):
+		beat_checkers[1].hit_beat()
+	if event.is_action_pressed("beat_mid_right"):
+		beat_checkers[2].hit_beat()
+	if event.is_action_pressed("beat_right"):
+		beat_checkers[3].hit_beat()

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c7ed1gwvngvxm"]
+
+[ext_resource type="Script" uid="uid://b1vnaeg4l5olb" path="res://scripts/rhythm/beat_checker.gd" id="1_dplpj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqoh6"]
+
+[node name="BeatChecker" type="Area2D" unique_id=942611136]
+monitorable = false
+script = ExtResource("1_dplpj")
+beatGroup = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1846306304]
+scale = Vector2(1, 0.3)
+shape = SubResource("RectangleShape2D_nqoh6")
