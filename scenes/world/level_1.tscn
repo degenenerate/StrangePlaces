@@ -86,16 +86,12 @@ position = Vector2(49, -77)
 
 [node name="BeatCheckerLeft" parent="RhythmGame/BeatsManager/BeatCheckLocations" unique_id=942611136 instance=ExtResource("8_28edb")]
 position = Vector2(-48, 46)
-beatGroup = "Beat"
 
 [node name="BeatCheckerMidLeft" parent="RhythmGame/BeatsManager/BeatCheckLocations" unique_id=373232512 instance=ExtResource("8_28edb")]
 position = Vector2(-16, 46)
-beatGroup = "Beat"
 
 [node name="BeatCheckerMidRight" parent="RhythmGame/BeatsManager/BeatCheckLocations" unique_id=1474178150 instance=ExtResource("8_28edb")]
 position = Vector2(17, 46)
-beatGroup = "Beat"
 
 [node name="BeatCheckerRight" parent="RhythmGame/BeatsManager/BeatCheckLocations" unique_id=1800804778 instance=ExtResource("8_28edb")]
 position = Vector2(49, 46)
-beatGroup = "Beat"

@@ -30,6 +30,8 @@ var _beat_location: int
 var _time_until_next: float
 
 var beat_hit_count := 0
+var beat_great_count := 0
+var beat_try_count := 0
 var beat_streak := 0
 
 func _select_beat(idx: int) -> void:
@@ -72,10 +74,13 @@ func _input(event: InputEvent) -> void:
 	if beatIndex == -1:
 		return
 	
-	var hitBeat: bool = beat_checkers[beatIndex].hit_beat()
-	if hitBeat:
+	var hitType: BeatChecker.HitType = beat_checkers[beatIndex].hit_beat()
+	if hitType != BeatChecker.HitType.MISS:
 		beat_hit_count += 1
 		beat_streak += 1
+		if hitType == BeatChecker.HitType.GREAT:
+			beat_great_count += 1
 	else:
 		beat_streak = 0
-	print("Total Beats:", beat_hit_count, "Beat Streak:", beat_streak)
+	beat_try_count += 1
+	print("Total Beats:", beat_hit_count, " Great Beats:", beat_great_count, " Beat Streak:", beat_streak)
