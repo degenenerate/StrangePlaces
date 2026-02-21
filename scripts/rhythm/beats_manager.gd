@@ -74,13 +74,4 @@ func _input(event: InputEvent) -> void:
 	if beatIndex == -1:
 		return
 	
-	var hitType: BeatChecker.HitType = beat_checkers[beatIndex].hit_beat()
-	if hitType != BeatChecker.HitType.MISS:
-		beat_hit_count += 1
-		beat_streak += 1
-		if hitType == BeatChecker.HitType.GREAT:
-			beat_great_count += 1
-	else:
-		beat_streak = 0
-	beat_try_count += 1
-	print("Total Beats:", beat_hit_count, " Great Beats:", beat_great_count, " Beat Streak:", beat_streak)
+	
