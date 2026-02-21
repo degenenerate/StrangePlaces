@@ -1,7 +1,7 @@
 extends Label
 
 func _on_display_rhythm_score(perfect: int, great: int, streak: int, missed: int) -> void:
-	text = "PERFECT: %3d\nGREAT: %3d\nSTREAK: %3d\nMISSED: %3d" % [perfect, great, streak, missed]
+	text = "PERFECT: %03d\nGREAT: %03d\nSTREAK: %03d\nMISSED: %03d" % [perfect, great, streak, missed]
 	print("changed")
 
 func _ready() -> void:
