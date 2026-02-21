@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://berfw17en8l4x" path="res://scenes/world/rhythm/beat.tscn" id="7_28edb"]
 [ext_resource type="Script" uid="uid://bt2q7273gt42i" path="res://scripts/rhythm/beats_container.gd" id="9_0y0dc"]
 [ext_resource type="Texture2D" uid="uid://dnp4yxvlxqm1y" path="res://textures/background.png" id="9_8q1ex"]
-[ext_resource type="Script" uid="uid://dxeentns2w0da" path="res://scenes/world/sign_spawner.gd" id="11_mt152"]
+[ext_resource type="Script" uid="uid://dxeentns2w0da" path="res://scripts/interruptions/sign_spawner.gd" id="11_mt152"]
 [ext_resource type="PackedScene" uid="uid://duypoqc7dx80k" path="res://scenes/_tools/sign.tscn" id="12_2tgb3"]
 
 [sub_resource type="Resource" id="Resource_15mv3"]
@@ -47,11 +47,10 @@ z_index = 1
 texture_filter = 1
 texture = ExtResource("6_0y0dc")
 
-[node name="BeatsManager" type="Node" parent="RhythmGame" unique_id=1083324480 node_paths=PackedStringArray("beat_parents", "beat_checkers")]
+[node name="BeatsManager" type="Node" parent="RhythmGame" unique_id=1083324480 node_paths=PackedStringArray("beat_parents")]
 script = ExtResource("6_teo0j")
 beat_scene = ExtResource("7_28edb")
 beat_parents = [NodePath("BeatSpawnLocations/LeftBeats"), NodePath("BeatSpawnLocations/MidLeftBeats"), NodePath("BeatSpawnLocations/MidRightBeats"), NodePath("BeatSpawnLocations/RightBeats")]
-beat_checkers = [null, null, null, null]
 
 [node name="BeatSpawnLocations" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=922768853]
 

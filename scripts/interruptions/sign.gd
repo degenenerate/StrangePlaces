@@ -1,4 +1,4 @@
-class_name Sign extends Sprite2D
+class_name Sign extends Node2D
 
 @export var move_in_time: float = 2.0
 @export var move_out_time: float = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjtws6q3lqs37"]
+[gd_scene format=3 uid="uid://cjtws6q3lqs37"]
 
 [ext_resource type="FontFile" uid="uid://boyunv0o41txp" path="res://fonts/funnel_sans/FunnelSans-VariableFont_wght.ttf" id="1_awrl2"]
 [ext_resource type="Texture2D" uid="uid://bhapmntrfcj8p" path="res://textures/title-image.png" id="2_8gv88"]
@@ -24,16 +24,16 @@ font_size = 64
 font = ExtResource("1_awrl2")
 font_size = 32
 
-[node name="EndMenu" type="Node2D"]
+[node name="EndMenu" type="Node2D" unique_id=100531800]
 script = SubResource("GDScript_d23ta")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=684724557]
 zoom = Vector2(3, 3)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1731528065]
 layer = 2
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=966587512]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -47,14 +47,14 @@ offset_bottom = -560.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/Control"]
+[node name="PlayButton" type="Button" parent="CanvasLayer/Control" unique_id=1984903487]
 layout_mode = 0
 offset_left = 736.0
 offset_top = 828.0
 offset_right = 1120.0
 offset_bottom = 949.0
 
-[node name="PlayLabel" type="Label" parent="CanvasLayer/Control/PlayButton"]
+[node name="PlayLabel" type="Label" parent="CanvasLayer/Control/PlayButton" unique_id=171115975]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -71,14 +71,14 @@ text = "REPLAY"
 label_settings = SubResource("LabelSettings_nl6gh")
 horizontal_alignment = 1
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/Control"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/Control" unique_id=2116836685]
 layout_mode = 0
 offset_left = 832.0
 offset_top = 972.0
 offset_right = 1025.0
 offset_bottom = 1060.0
 
-[node name="QuitLabel" type="Label" parent="CanvasLayer/Control/QuitButton"]
+[node name="QuitLabel" type="Label" parent="CanvasLayer/Control/QuitButton" unique_id=871484925]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -96,7 +96,7 @@ text = "QUIT
 label_settings = SubResource("LabelSettings_t6n4j")
 horizontal_alignment = 1
 
-[node name="Credits" type="Label" parent="CanvasLayer/Control"]
+[node name="Credits" type="Label" parent="CanvasLayer/Control" unique_id=16704765]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -106,19 +106,26 @@ offset_top = 60.0
 offset_right = 1831.0
 offset_bottom = 633.0
 grow_horizontal = 0
-text = "DEVELOPMENT
+text = "GODOT
 OuterSoda
+Degenerate
+
+ART
+Melonare
+(OuterSoda)
 
 MUSIC
 Mayo
 
 THANKS
 ConstantDeriv
-Yumei"
+
+FOR
+Brackey 's GJ 2026.1"
 label_settings = SubResource("LabelSettings_gscva")
 horizontal_alignment = 2
 
-[node name="GameTitle" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="GameTitle" type="TextureRect" parent="CanvasLayer/Control" unique_id=1732249194]
 z_index = -1
 layout_mode = 0
 offset_left = 136.0

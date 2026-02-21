@@ -1,22 +1,48 @@
 [gd_scene format=3 uid="uid://duypoqc7dx80k"]
 
-[ext_resource type="Script" uid="uid://badv0lc6kbk4t" path="res://scripts/sign.gd" id="1_tjwrj"]
+[ext_resource type="Shader" uid="uid://5jh4yjkss1h8" path="res://shaders/drawing_board.gdshader" id="1_nktrn"]
+[ext_resource type="Script" uid="uid://badv0lc6kbk4t" path="res://scripts/interruptions/sign.gd" id="1_tjwrj"]
+[ext_resource type="Texture2D" uid="uid://ct7x1ds8q7ayf" path="res://textures/blackmail-1.png" id="1_wchc3"]
+[ext_resource type="Script" uid="uid://wh62kv54k5a0" path="res://scripts/interruptions/drawing_line.gd" id="4_nktrn"]
 
-[sub_resource type="Gradient" id="Gradient_2tgb3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nktrn"]
+viewport_path = NodePath("BufferViewport")
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3wpl1"]
-gradient = SubResource("Gradient_2tgb3")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nktrn"]
+resource_local_to_scene = true
+shader = ExtResource("1_nktrn")
+shader_parameter/_color = Color(1, 0, 0, 1)
+shader_parameter/_buffer_tex = SubResource("ViewportTexture_nktrn")
 
-[node name="sign" type="Sprite2D" unique_id=1522837422 node_paths=PackedStringArray("sign_button")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lejkn"]
+size = Vector2(64, 80)
+
+[node name="sign" type="Node2D" unique_id=802670792 node_paths=PackedStringArray("sign_button")]
 z_index = 1
-texture = SubResource("GradientTexture2D_3wpl1")
+texture_filter = 1
+material = SubResource("ShaderMaterial_nktrn")
 script = ExtResource("1_tjwrj")
 sign_button = NodePath("Button")
 
 [node name="Button" type="Button" parent="." unique_id=1035807150]
-offset_left = -28.0
-offset_top = 20.0
-offset_right = 30.0
-offset_bottom = 28.0
+offset_left = -32.0
+offset_top = -18.000002
+offset_right = 26.0
+offset_bottom = -10.000002
+scale = Vector2(0.4498453, 1.9612002)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=716461414]
+texture_filter = 1
+texture = ExtResource("1_wchc3")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=341277]
+width = 2.0
+default_color = Color(0.06666667, 0, 0.105882354, 1)
+script = ExtResource("4_nktrn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=170551166]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=111497221]
+shape = SubResource("RectangleShape2D_lejkn")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
