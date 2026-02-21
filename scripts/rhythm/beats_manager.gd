@@ -27,20 +27,18 @@ var song_finished: bool = false
 
 var _next_beat: int
 var _beat_location: int
+var _this_beat_length: float
 var _time_until_next: float
-
-var beat_hit_count := 0
-var beat_great_count := 0
-var beat_try_count := 0
-var beat_streak := 0
 
 func _select_beat(idx: int) -> void:
 	_next_beat = idx
 	
 	_beat_location = beat_info[idx][0]
+	_this_beat_length = beat_info[idx][1]
 	_time_until_next = beat_info[idx][1]
 
 func _ready() -> void:
+	ScoreManager.initialize()
 	_select_beat(0)
 
 func _process(delta: float) -> void:
@@ -52,6 +50,7 @@ func _spawn_beats(delta: float) -> void:
 	if _time_until_next <= 0:
 		if _beat_location >= 0:
 			var _new_beat = beat_scene.instantiate()
+			_new_beat.note_length = _this_beat_length
 			beat_parents[_beat_location].add_child(_new_beat)
 		
 		if _next_beat + 1 < beat_info.size():
@@ -61,17 +60,27 @@ func _spawn_beats(delta: float) -> void:
 		song_finished = true
 
 func _input(event: InputEvent) -> void:
-	var beatIndex := -1
+	var beat_index := -1
 	if event.is_action_pressed("beat_left"):
-		beatIndex = 0
+		beat_index = 0
 	if event.is_action_pressed("beat_mid_left"):
-		beatIndex = 1
+		beat_index = 1
 	if event.is_action_pressed("beat_mid_right"):
-		beatIndex = 2
+		beat_index = 2
 	if event.is_action_pressed("beat_right"):
-		beatIndex = 3
+		beat_index = 3
 		
-	if beatIndex == -1:
+	if beat_index == -1:
 		return
-	
+		
+	var last_note: Node2D = beat_parents[beat_index].beats_list.pop_front()
+	if not last_note:
+		ScoreManager.add_missed_beat()
+		return     
+		
+	if abs(last_note.beats_until_hit) < Globals.great_beat_margin:
+		ScoreManager.add_great_beat()
+	else:
+		ScoreManager.add_missed_beat()
+	last_note.queue_free()
 	

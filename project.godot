@@ -25,6 +25,7 @@ BackgroundMusic="*res://scenes/_tools/background_music.tscn"
 SceneTransition="*res://scenes/_tools/scene_transition.tscn"
 Globals="*res://scripts/globals/global_variables.gd"
 PhantomCameraManager="*uid://duq6jhf6unyis"
+ScoreManager="*uid://dr7vtdwjc4vgf"
 
 [display]
 

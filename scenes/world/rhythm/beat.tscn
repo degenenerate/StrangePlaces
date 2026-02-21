@@ -3,10 +3,9 @@
 [ext_resource type="Script" uid="uid://ctmugfxav42yj" path="res://scripts/rhythm/beat.gd" id="1_38rxm"]
 [ext_resource type="Texture2D" uid="uid://ng0bu6agedv0" path="res://textures/beat.png" id="2_rskt4"]
 
-[node name="Beat" type="Sprite2D" unique_id=493880687]
+[node name="Beat" type="Node2D" unique_id=343995802]
 texture_filter = 1
 script = ExtResource("1_38rxm")
-unitsPerBeat = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1437742702]
 z_index = 10

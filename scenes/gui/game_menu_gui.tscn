@@ -1,19 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnn1mq5e4lb8n"]
+[gd_scene format=3 uid="uid://dnn1mq5e4lb8n"]
 
 [ext_resource type="Script" uid="uid://d0e57o7xawc5g" path="res://scripts/main_menu/main_menu.gd" id="1_fqynh"]
-[ext_resource type="LabelSettings" uid="uid://rjhyhcqk8br7" path="res://resources/label_description.tres" id="2_mgams"]
+[ext_resource type="LabelSettings" uid="uid://cbq1h5ybkos47" path="res://resources/description.tres" id="2_mgams"]
 [ext_resource type="Texture2D" uid="uid://bhapmntrfcj8p" path="res://textures/title-image.png" id="3_vitml"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nl6gh"]
 font_size = 100
 
-[node name="GameMenuGui" type="Node2D"]
+[node name="GameMenuGui" type="Node2D" unique_id=1800964142]
 script = ExtResource("1_fqynh")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=769247803]
 layer = 2
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1042685067]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,14 +28,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/Control"]
+[node name="PlayButton" type="Button" parent="CanvasLayer/Control" unique_id=493216553]
 layout_mode = 0
 offset_left = 1088.0
 offset_top = 764.0
 offset_right = 1354.0
 offset_bottom = 885.0
 
-[node name="PlayLabel" type="Label" parent="CanvasLayer/Control/PlayButton"]
+[node name="PlayLabel" type="Label" parent="CanvasLayer/Control/PlayButton" unique_id=1987612549]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -52,14 +52,14 @@ text = "PLAY"
 label_settings = SubResource("LabelSettings_nl6gh")
 horizontal_alignment = 1
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/Control"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/Control" unique_id=1838767375]
 layout_mode = 0
 offset_left = 568.0
 offset_top = 764.0
 offset_right = 834.0
 offset_bottom = 885.0
 
-[node name="QuitLabel" type="Label" parent="CanvasLayer/Control/QuitButton"]
+[node name="QuitLabel" type="Label" parent="CanvasLayer/Control/QuitButton" unique_id=1122647375]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,15 +77,15 @@ text = "QUIT
 label_settings = SubResource("LabelSettings_nl6gh")
 horizontal_alignment = 1
 
-[node name="SmallDescription" type="Label" parent="CanvasLayer/Control"]
+[node name="SmallDescription" type="Label" parent="CanvasLayer/Control" unique_id=1667187321]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 1304.0
-offset_top = 60.0
-offset_right = 1831.0
-offset_bottom = 633.0
+offset_left = 1302.0
+offset_top = 62.0
+offset_right = 1829.0
+offset_bottom = 635.0
 grow_horizontal = 0
 text = "YOU RUN A MUSEUM - 
 NOT A NORMAL ONE THOUGH.
@@ -102,7 +102,7 @@ DON'T ANGER THEM!"
 label_settings = ExtResource("2_mgams")
 horizontal_alignment = 2
 
-[node name="GameTitle" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="GameTitle" type="TextureRect" parent="CanvasLayer/Control" unique_id=1557168205]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 148.0

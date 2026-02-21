@@ -8,13 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://casn6lgcw1c7e" path="res://textures/rhythm-track.png" id="6_0y0dc"]
 [ext_resource type="Script" uid="uid://djt6j20wum6ta" path="res://scripts/rhythm/beats_manager.gd" id="6_teo0j"]
 [ext_resource type="PackedScene" uid="uid://berfw17en8l4x" path="res://scenes/world/rhythm/beat.tscn" id="7_28edb"]
+[ext_resource type="Script" uid="uid://bt2q7273gt42i" path="res://scripts/rhythm/beats_container.gd" id="9_0y0dc"]
 [ext_resource type="Texture2D" uid="uid://dnp4yxvlxqm1y" path="res://textures/background.png" id="9_8q1ex"]
 
 [sub_resource type="Resource" id="Resource_15mv3"]
 script = ExtResource("5_pa8r4")
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b0ve4"]
-normal = Vector2(0, 1)
 
 [node name="Level1" type="Node2D" unique_id=1416608361]
 material = ExtResource("1_b0ve4")
@@ -47,40 +45,35 @@ z_index = 1
 texture_filter = 1
 texture = ExtResource("6_0y0dc")
 
-[node name="Needle" type="Area2D" parent="RhythmGame" unique_id=1777925891]
-position = Vector2(0, 43)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RhythmGame/Needle" unique_id=1544061635]
-shape = SubResource("WorldBoundaryShape2D_b0ve4")
-
-[node name="ColorRect" type="ColorRect" parent="RhythmGame/Needle" unique_id=669120281]
-offset_left = -64.0
-offset_right = -24.0
-offset_bottom = 40.0
-scale = Vector2(3.2, 0.15999758)
-
 [node name="BeatsManager" type="Node" parent="RhythmGame" unique_id=1083324480 node_paths=PackedStringArray("beat_parents", "beat_checkers")]
 script = ExtResource("6_teo0j")
 beat_scene = ExtResource("7_28edb")
 beat_parents = [NodePath("BeatSpawnLocations/LeftBeats"), NodePath("BeatSpawnLocations/MidLeftBeats"), NodePath("BeatSpawnLocations/MidRightBeats"), NodePath("BeatSpawnLocations/RightBeats")]
-beat_checkers = [NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+beat_checkers = [null, null, null, null]
 
 [node name="BeatSpawnLocations" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=922768853]
 
 [node name="LeftBeats" type="Node2D" parent="RhythmGame/BeatsManager/BeatSpawnLocations" unique_id=1259865955]
-position = Vector2(-131, -58)
+position = Vector2(-131, -57)
+script = ExtResource("9_0y0dc")
 
 [node name="Beat" parent="RhythmGame/BeatsManager/BeatSpawnLocations/LeftBeats" unique_id=493880687 instance=ExtResource("7_28edb")]
 z_index = 10
 
 [node name="MidLeftBeats" type="Node2D" parent="RhythmGame/BeatsManager/BeatSpawnLocations" unique_id=1982831380]
-position = Vector2(-108, -58)
+position = Vector2(-108, -57)
+script = ExtResource("9_0y0dc")
 
 [node name="MidRightBeats" type="Node2D" parent="RhythmGame/BeatsManager/BeatSpawnLocations" unique_id=1290638926]
-position = Vector2(-85, -58)
+position = Vector2(-85, -57)
+script = ExtResource("9_0y0dc")
 
 [node name="RightBeats" type="Node2D" parent="RhythmGame/BeatsManager/BeatSpawnLocations" unique_id=1387385214]
-position = Vector2(-62, -58)
+position = Vector2(-62, -57)
+script = ExtResource("9_0y0dc")
+
+[node name="Needle" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=1647560580]
+position = Vector2(-96.5, 51)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=859120617]
 texture_filter = 1

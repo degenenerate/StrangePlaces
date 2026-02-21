@@ -1,3 +1,39 @@
 [gd_scene format=3 uid="uid://cmhq2wlgwb3pe"]
 
-[node name="Level1Gui" type="Node2D"]
+[ext_resource type="Script" uid="uid://c6r3dhojcvyr5" path="res://scripts/gui/rhythm_score_label.gd" id="2_wuwop"]
+
+[node name="Level1Gui" type="Node2D" unique_id=1125589481]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=827424301]
+layer = 2
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=2142813975]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -984.0
+offset_top = -532.0
+offset_right = -984.0
+offset_bottom = -532.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RhythmScore" type="Label" parent="CanvasLayer/Control" unique_id=310085337]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1304.0
+offset_top = 60.0
+offset_right = 1831.0
+offset_bottom = 633.0
+grow_horizontal = 0
+text = "PERFECT: 000
+GREAT: 000
+MISSED: 000"
+horizontal_alignment = 2
+script = ExtResource("2_wuwop")
