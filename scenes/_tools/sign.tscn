@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://duypoqc7dx80k"]
+
+[ext_resource type="Script" uid="uid://badv0lc6kbk4t" path="res://scripts/sign.gd" id="1_tjwrj"]
+
+[sub_resource type="Gradient" id="Gradient_2tgb3"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3wpl1"]
+gradient = SubResource("Gradient_2tgb3")
+
+[node name="sign" type="Sprite2D" unique_id=1522837422 node_paths=PackedStringArray("sign_button")]
+z_index = 1
+texture = SubResource("GradientTexture2D_3wpl1")
+script = ExtResource("1_tjwrj")
+sign_button = NodePath("Button")
+
+[node name="Button" type="Button" parent="." unique_id=1035807150]
+offset_left = -28.0
+offset_top = 20.0
+offset_right = 30.0
+offset_bottom = 28.0
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
