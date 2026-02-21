@@ -10,9 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://berfw17en8l4x" path="res://scenes/world/rhythm/beat.tscn" id="7_28edb"]
 [ext_resource type="Script" uid="uid://bt2q7273gt42i" path="res://scripts/rhythm/beats_container.gd" id="9_0y0dc"]
 [ext_resource type="Texture2D" uid="uid://dnp4yxvlxqm1y" path="res://textures/background.png" id="9_8q1ex"]
+[ext_resource type="Script" uid="uid://badv0lc6kbk4t" path="res://scripts/newspaper.gd" id="10_mt152"]
 
 [sub_resource type="Resource" id="Resource_15mv3"]
 script = ExtResource("5_pa8r4")
+
+[sub_resource type="Gradient" id="Gradient_2tgb3"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3wpl1"]
+gradient = SubResource("Gradient_2tgb3")
 
 [node name="Level1" type="Node2D" unique_id=1416608361]
 material = ExtResource("1_b0ve4")
@@ -75,6 +81,33 @@ script = ExtResource("9_0y0dc")
 [node name="Needle" type="Node2D" parent="RhythmGame/BeatsManager" unique_id=1647560580]
 position = Vector2(-96.5, 51)
 
+[node name="Newspaper" type="Sprite2D" parent="." unique_id=1412726672]
+z_index = 1
+position = Vector2(269, -42)
+texture = SubResource("GradientTexture2D_3wpl1")
+script = ExtResource("10_mt152")
+
 [node name="Background" type="Sprite2D" parent="." unique_id=859120617]
 texture_filter = 1
 texture = ExtResource("9_8q1ex")
+
+[node name="Debug" type="Node2D" parent="." unique_id=1857450923]
+position = Vector2(92, 56)
+
+[node name="NewspaperIn" type="Button" parent="Debug" unique_id=523748284]
+offset_right = 32.0
+offset_bottom = 32.0
+text = "In"
+autowrap_trim_flags = 0
+clip_text = true
+
+[node name="NewspaperOut" type="Button" parent="Debug" unique_id=1903968210]
+offset_left = 33.0
+offset_right = 65.0
+offset_bottom = 32.0
+text = "Out"
+autowrap_trim_flags = 0
+clip_text = true
+
+[connection signal="button_down" from="Debug/NewspaperIn" to="Newspaper" method="_on_newspaper_in_button_down"]
+[connection signal="button_down" from="Debug/NewspaperOut" to="Newspaper" method="_on_newspaper_out_button_down"]
