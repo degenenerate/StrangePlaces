@@ -19,6 +19,12 @@ func initialize() -> void:
 	resolved_messages = 0
 	unresolved_messages = 0
 
+func add_perfect_beat():
+	perfect_beats += 1
+	beat_streak += 1
+		
+	display_rhythm_score.emit(perfect_beats, great_beats, beat_streak, missed_beats)
+
 func add_great_beat():
 	great_beats += 1
 	beat_streak += 1

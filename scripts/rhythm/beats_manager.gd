@@ -21,6 +21,7 @@ var beat_info: Array[Array] = [
 
 @export var beat_scene: Resource
 @export var beat_parents: Array[Node2D]
+@export var needle: Node2D
 
 var song_finished: bool = false
 

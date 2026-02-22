@@ -5,3 +5,4 @@ var bpm: float = 60
 
 var register_beat_margin: float = 0.5
 var great_beat_margin: float = 0.2
+var perfect_beat_margin: float = 0.1

@@ -7,13 +7,13 @@ class_name Sign extends Node2D
 @export var move_out_y_target: float = -150.0
 @export var move_out_y_half_range: float = 15.0
 
-@export var sign_button: Button
-
 signal move_in_finished
 signal move_out_finished
 
+signal sign_done
+
 func _ready() -> void:
-	sign_button.disabled = false
+	sign_done.connect(_on_sign_done)
 
 func move_in(target: Vector2):
 	position.x = move_in_x_start + randf_range(move_in_x_half_range, -move_in_x_half_range)
@@ -33,6 +33,5 @@ func move_out():
 	tween.tween_callback(Callable(self, "queue_free"))
 
 
-func _on_button_button_down() -> void:
+func _on_sign_done() -> void:
 	move_out()
-	sign_button.disabled = true

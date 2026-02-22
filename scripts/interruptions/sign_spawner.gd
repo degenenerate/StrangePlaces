@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var sign_scene: Resource
-@export var spawn_interval: float = 6.0
+@export var spawn_interval: float = 4.0
 @export var spawn_interval_half_range: float = 1.0
 @export var spawn_timer: Timer
 @export var spawn_top_left: Node2D

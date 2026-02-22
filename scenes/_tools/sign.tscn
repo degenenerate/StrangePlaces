@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://badv0lc6kbk4t" path="res://scripts/interruptions/sign.gd" id="1_tjwrj"]
 [ext_resource type="Texture2D" uid="uid://ct7x1ds8q7ayf" path="res://textures/blackmail-1.png" id="1_wchc3"]
 [ext_resource type="Script" uid="uid://wh62kv54k5a0" path="res://scripts/interruptions/drawing_line.gd" id="4_nktrn"]
+[ext_resource type="Texture2D" uid="uid://crihprguegob" path="res://textures/blackmail-2.png" id="5_1v2g7"]
+[ext_resource type="Script" uid="uid://ds6jovnmqmeil" path="res://scripts/interruptions/judge.gd" id="6_qft4v"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_nktrn"]
 viewport_path = NodePath("BufferViewport")
@@ -14,35 +16,107 @@ shader = ExtResource("1_nktrn")
 shader_parameter/_color = Color(1, 0, 0, 1)
 shader_parameter/_buffer_tex = SubResource("ViewportTexture_nktrn")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lejkn"]
-size = Vector2(64, 80)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nktrn"]
+size = Vector2(64, 80.5)
 
-[node name="sign" type="Node2D" unique_id=802670792 node_paths=PackedStringArray("sign_button")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lejkn"]
+size = Vector2(12, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1v2g7"]
+size = Vector2(35.5, 3.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qft4v"]
+size = Vector2(36, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4umu"]
+size = Vector2(19, 9.935622)
+
+[node name="sign" type="Node2D" unique_id=802670792]
 z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_nktrn")
 script = ExtResource("1_tjwrj")
-sign_button = NodePath("Button")
 
-[node name="Button" type="Button" parent="." unique_id=1035807150]
-offset_left = -32.0
-offset_top = -18.000002
-offset_right = 26.0
-offset_bottom = -10.000002
-scale = Vector2(0.4498453, 1.9612002)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2110230230]
+zoom = Vector2(10, 10)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=716461414]
+[node name="PlzPay" type="Node2D" parent="." unique_id=1140884860]
+
+[node name="Sprite2D" type="Sprite2D" parent="PlzPay" unique_id=716461414]
 texture_filter = 1
 texture = ExtResource("1_wchc3")
 
-[node name="Line2D" type="Line2D" parent="." unique_id=341277]
+[node name="Paper" type="Area2D" parent="PlzPay" unique_id=234856933]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlzPay/Paper" unique_id=1694277244]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_nktrn")
+
+[node name="Line2D" type="Line2D" parent="PlzPay" unique_id=341277 node_paths=PackedStringArray("_required_areas")]
 width = 2.0
 default_color = Color(0.06666667, 0, 0.105882354, 1)
 script = ExtResource("4_nktrn")
+_required_areas = [NodePath("../Area2D"), NodePath("../Area2D2"), NodePath("../Area2D3")]
 
-[node name="Area2D" type="Area2D" parent="." unique_id=170551166]
+[node name="Area2D" type="Area2D" parent="PlzPay" unique_id=170551166]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=111497221]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlzPay/Area2D" unique_id=111497221]
+position = Vector2(-5, 30.5)
 shape = SubResource("RectangleShape2D_lejkn")
 
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[node name="Area2D2" type="Area2D" parent="PlzPay" unique_id=183660525]
+position = Vector2(13.5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlzPay/Area2D2" unique_id=2088395267]
+position = Vector2(-5, 30.5)
+shape = SubResource("RectangleShape2D_lejkn")
+
+[node name="Area2D3" type="Area2D" parent="PlzPay" unique_id=1885241276]
+position = Vector2(27, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlzPay/Area2D3" unique_id=18306012]
+position = Vector2(-5, 30.5)
+shape = SubResource("RectangleShape2D_lejkn")
+
+[node name="TheTime" type="Node2D" parent="." unique_id=950488410]
+
+[node name="Sprite2D" type="Sprite2D" parent="TheTime" unique_id=1298597121]
+texture_filter = 1
+texture = ExtResource("5_1v2g7")
+
+[node name="Paper" type="Area2D" parent="TheTime" unique_id=1587811120]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TheTime/Paper" unique_id=857022423]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_nktrn")
+
+[node name="Line2D" type="Line2D" parent="TheTime" unique_id=1144360717 node_paths=PackedStringArray("_required_areas")]
+width = 2.0
+default_color = Color(0.06666667, 0, 0.105882354, 1)
+script = ExtResource("4_nktrn")
+_required_areas = [NodePath("../Area2D"), NodePath("../Area2D2"), NodePath("../Area2D3")]
+
+[node name="Area2D" type="Area2D" parent="TheTime" unique_id=1476817223]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TheTime/Area2D" unique_id=649500493]
+position = Vector2(-10.75, -12.625)
+shape = SubResource("RectangleShape2D_1v2g7")
+
+[node name="Area2D2" type="Area2D" parent="TheTime" unique_id=1138072242]
+position = Vector2(13.5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TheTime/Area2D2" unique_id=1727399283]
+position = Vector2(-24.5, -16)
+shape = SubResource("RectangleShape2D_qft4v")
+
+[node name="Area2D3" type="Area2D" parent="TheTime" unique_id=2042797595]
+position = Vector2(27, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TheTime/Area2D3" unique_id=656812899]
+position = Vector2(-48, -9)
+scale = Vector2(1.5886989, 1.0903267)
+shape = SubResource("RectangleShape2D_x4umu")
+
+[node name="Judge" type="Node" parent="." unique_id=780556143 node_paths=PackedStringArray("options")]
+script = ExtResource("6_qft4v")
+options = [NodePath("../PlzPay"), NodePath("../TheTime")]
