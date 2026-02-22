@@ -35,10 +35,14 @@ func _ready() -> void:
 	_written_areas.fill(false)
 
 func _process(_delta: float) -> void:
+	var sfx: AudioStreamPlayer2D = BackgroundMusic.get_child(2)
 	if Input.is_action_just_pressed("click"):
 		_mouse_clicked = _mouse_inside
+		sfx.playing = true
+		sfx.stream_paused = false
 	if Input.is_action_just_released("click"):
 		_mouse_clicked = false
+		sfx.stream_paused = true
 	
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		return
