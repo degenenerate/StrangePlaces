@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://duypoqc7dx80k"]
 
-[ext_resource type="Shader" uid="uid://5jh4yjkss1h8" path="res://shaders/drawing_board.gdshader" id="1_nktrn"]
+[ext_resource type="Shader" path="res://shaders/drawing_board.gdshader" id="1_nktrn"]
 [ext_resource type="Script" uid="uid://badv0lc6kbk4t" path="res://scripts/interruptions/sign.gd" id="1_tjwrj"]
 [ext_resource type="Texture2D" uid="uid://ct7x1ds8q7ayf" path="res://textures/blackmail-1.png" id="1_wchc3"]
 [ext_resource type="Script" uid="uid://wh62kv54k5a0" path="res://scripts/interruptions/drawing_line.gd" id="4_nktrn"]

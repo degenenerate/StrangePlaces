@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c0kea7ieluor0"]
+
+[ext_resource type="Texture2D" uid="uid://bnkiw0eii8tmk" path="res://textures/great.png" id="1_yufo7"]
+
+[sub_resource type="Curve" id="Curve_6kano"]
+_limits = [1.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1.3033707), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0vgq6"]
+curve = SubResource("Curve_6kano")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_id12j"]
+particle_flag_disable_z = true
+angle_min = -14.9999895
+angle_max = 15.0000105
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_0vgq6")
+color = Color(0.61, 1, 0.727, 1)
+
+[node name="BeatText" type="GPUParticles2D" unique_id=8262528]
+texture_filter = 1
+emitting = false
+amount = 1
+texture = ExtResource("1_yufo7")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_id12j")

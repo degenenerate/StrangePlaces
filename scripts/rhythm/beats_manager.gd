@@ -80,6 +80,7 @@ func _input(event: InputEvent) -> void:
 		
 	if abs(last_note.beats_until_hit) < Globals.great_beat_margin:
 		ScoreManager.add_great_beat()
+		ParticleSystem.play_great_particle(last_note.global_position)
 	else:
 		ScoreManager.add_missed_beat()
 	last_note.queue_free()

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c15h87b8w8e3g"]
+
+[ext_resource type="Texture2D" uid="uid://ng0bu6agedv0" path="res://textures/beat.png" id="1_422rj"]
+
+[sub_resource type="Curve" id="Curve_5iyif"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hw8tr"]
+curve = SubResource("Curve_5iyif")
+
+[sub_resource type="Gradient" id="Gradient_6e8j6"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(1, 1, 1, 1, 0.66999996, 1, 0.66999996, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0vgq6"]
+gradient = SubResource("Gradient_6e8j6")
+
+[sub_resource type="Curve" id="Curve_b7sat"]
+_limits = [1.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1.2022471), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mon3y"]
+curve = SubResource("Curve_b7sat")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5iyif"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_mon3y")
+color_ramp = SubResource("GradientTexture1D_0vgq6")
+alpha_curve = SubResource("CurveTexture_hw8tr")
+
+[node name="BeatParticle" type="GPUParticles2D" unique_id=720233786]
+texture_filter = 1
+emitting = false
+amount = 1
+texture = ExtResource("1_422rj")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_5iyif")

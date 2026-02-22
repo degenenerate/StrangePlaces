@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://dnp4yxvlxqm1y" path="res://textures/background.png" id="9_8q1ex"]
 [ext_resource type="Script" uid="uid://dxeentns2w0da" path="res://scripts/interruptions/sign_spawner.gd" id="11_mt152"]
 [ext_resource type="PackedScene" uid="uid://duypoqc7dx80k" path="res://scenes/_tools/sign.tscn" id="12_2tgb3"]
+[ext_resource type="Script" uid="uid://brb5dyh1e4x5b" path="res://scripts/particle_system.gd" id="13_3wpl1"]
+[ext_resource type="PackedScene" uid="uid://c15h87b8w8e3g" path="res://scenes/_tools/Particles/beat_particle.tscn" id="14_e41m3"]
+[ext_resource type="PackedScene" uid="uid://cpa5mfe6r1w54" path="res://scenes/_tools/Particles/beat_miss_particle.tscn" id="15_nh2yv"]
+[ext_resource type="PackedScene" uid="uid://c8ddcyq8mmm3c" path="res://scenes/_tools/Particles/beat_great_particle.tscn" id="15_ya7kl"]
 
 [sub_resource type="Resource" id="Resource_15mv3"]
 script = ExtResource("5_pa8r4")
@@ -97,5 +101,11 @@ position = Vector2(12, -44)
 
 [node name="SpawnBotRight" type="Marker2D" parent="SignSpawner" unique_id=491397860]
 position = Vector2(114, 43)
+
+[node name="ParticleSystem" type="Node2D" parent="." unique_id=1741164559]
+script = ExtResource("13_3wpl1")
+_beat_perfect_particle = ExtResource("14_e41m3")
+_beat_great_particle = ExtResource("15_ya7kl")
+_beat_miss_particle = ExtResource("15_nh2yv")
 
 [connection signal="timeout" from="SignSpawner/Timer" to="SignSpawner" method="_on_timer_timeout"]

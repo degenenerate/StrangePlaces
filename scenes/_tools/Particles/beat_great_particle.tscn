@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c8ddcyq8mmm3c"]
+
+[ext_resource type="Script" uid="uid://cg3fnyfi30mbw" path="res://scripts/particle.gd" id="1_ulf1f"]
+[ext_resource type="PackedScene" uid="uid://c0kea7ieluor0" path="res://scenes/_tools/Particles/beat_text.tscn" id="2_ulf1f"]
+[ext_resource type="PackedScene" uid="uid://c15h87b8w8e3g" path="res://scenes/_tools/Particles/beat_particle.tscn" id="3_lll6q"]
+
+[node name="BeatGreatParticle" type="Node2D" unique_id=607003231 node_paths=PackedStringArray("_particles")]
+z_index = 2
+script = ExtResource("1_ulf1f")
+_particles = [NodePath("BeatText"), NodePath("BeatParticle")]
+
+[node name="BeatText" parent="." unique_id=8262528 instance=ExtResource("2_ulf1f")]
+
+[node name="BeatParticle" parent="." unique_id=720233786 instance=ExtResource("3_lll6q")]
+
+[node name="Timer" type="Timer" parent="." unique_id=1627309749]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

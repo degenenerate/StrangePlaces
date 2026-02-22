@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cpa5mfe6r1w54"]
+
+[ext_resource type="Script" uid="uid://cg3fnyfi30mbw" path="res://scripts/particle.gd" id="1_w1h5s"]
+[ext_resource type="PackedScene" uid="uid://c0kea7ieluor0" path="res://scenes/_tools/Particles/beat_text.tscn" id="2_sdve3"]
+[ext_resource type="Texture2D" uid="uid://byagfffld5pbq" path="res://textures/miss.png" id="3_twlv4"]
+
+[sub_resource type="Curve" id="Curve_w1h5s"]
+_limits = [1.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1.3033707), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sdve3"]
+curve = SubResource("Curve_w1h5s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_twlv4"]
+particle_flag_disable_z = true
+angle_min = -14.9999895
+angle_max = 15.0000105
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_sdve3")
+color = Color(1, 0.5, 0.5, 1)
+
+[node name="BeatMissParticle" type="Node2D" unique_id=607003231 node_paths=PackedStringArray("_particles")]
+z_index = 2
+script = ExtResource("1_w1h5s")
+_particles = [NodePath("BeatText"), NodePath("")]
+
+[node name="BeatText" parent="." unique_id=8262528 instance=ExtResource("2_sdve3")]
+texture = ExtResource("3_twlv4")
+process_material = SubResource("ParticleProcessMaterial_twlv4")
+
+[node name="Timer" type="Timer" parent="." unique_id=1627309749]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
