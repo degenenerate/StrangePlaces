@@ -83,5 +83,7 @@ func _input(event: InputEvent) -> void:
 		ParticleSystem.play_great_particle(last_note.global_position)
 	else:
 		ScoreManager.add_missed_beat()
+		ParticleSystem.play_miss_particle(last_note.global_position)
+	BackgroundMusic.get_child(1).playing = true #Swoosh
 	last_note.queue_free()
 	

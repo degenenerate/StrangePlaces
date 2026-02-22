@@ -2,6 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://bnkiw0eii8tmk" path="res://textures/great.png" id="1_yufo7"]
 
+[sub_resource type="Curve" id="Curve_yufo7"]
+_data = [Vector2(0.17567569, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_uys46"]
+curve = SubResource("Curve_yufo7")
+
 [sub_resource type="Curve" id="Curve_6kano"]
 _limits = [1.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1.3033707), 0.0, 0.0, 0, 0]
@@ -17,6 +24,7 @@ angle_max = 15.0000105
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_0vgq6")
 color = Color(0.61, 1, 0.727, 1)
+alpha_curve = SubResource("CurveTexture_uys46")
 
 [node name="BeatText" type="GPUParticles2D" unique_id=8262528]
 texture_filter = 1

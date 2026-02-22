@@ -2,6 +2,8 @@
 
 [ext_resource type="AudioStream" uid="uid://c64imopdaur7y" path="res://sfx/bgm.mp3" id="1_b8ynu"]
 [ext_resource type="AudioStream" uid="uid://c2d636pi76mnx" path="res://sfx/rhythm_music.mp3" id="2_gbj32"]
+[ext_resource type="AudioStream" uid="uid://20xq5xwwjq4b" path="res://sfx/swoosh.wav" id="3_2kq6x"]
+[ext_resource type="AudioStream" uid="uid://cipcenuqcwvvf" path="res://sfx/scribbling.wav" id="4_lwu03"]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" unique_id=816559020]
 stream = ExtResource("1_b8ynu")
@@ -9,3 +11,11 @@ autoplay = true
 
 [node name="RhythmMusic" type="AudioStreamPlayer2D" parent="." unique_id=1967457722]
 stream = ExtResource("2_gbj32")
+
+[node name="Swoosh" type="AudioStreamPlayer2D" parent="." unique_id=1665203667]
+position = Vector2(2, -1)
+stream = ExtResource("3_2kq6x")
+
+[node name="Scribble" type="AudioStreamPlayer2D" parent="." unique_id=1978767694]
+position = Vector2(2, -1)
+stream = ExtResource("4_lwu03")
